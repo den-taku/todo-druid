@@ -1,5 +1,5 @@
 mod data;
-use data::{AppState, TodoItem};
+use data::AppState;
 
 mod view;
 use view::build_ui;
@@ -11,12 +11,7 @@ fn main() {
         .title("Todo Tutorial")
         .window_size((400.0, 400.0));
 
-    let todos = vec![
-        TodoItem::new("thing one"),
-        TodoItem::new("thing two"),
-        TodoItem::new("thing three"),
-    ];
-    let initial_state = AppState::new(todos);
+    let initial_state = AppState::load_from_json();
 
     AppLauncher::with_window(main_window)
         .launch(initial_state)
